@@ -1,4 +1,4 @@
-# Eth-Avax-Module3
+# Eth-Avax-Module4
 Degen Gaming ERC20 Token on Avalanche Network
 Overview
 Welcome to the Degen Gaming ERC20 token project on the Avalanche network! This smart contract allows for the creation, transfer, redemption, and burning of Degen Gaming tokens. Players can earn these tokens as rewards for their participation in games and other activities within the Degen Gaming platform.
