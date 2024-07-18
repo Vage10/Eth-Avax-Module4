@@ -92,6 +92,7 @@ npm install @openzeppelin/contracts
 Deploy the Contract: Use a tool like Truffle or Hardhat to deploy the contract to your desired network.
 
 License
+
 This project is licensed under the MIT License. See the LICENSE file for details.
 
 Author
