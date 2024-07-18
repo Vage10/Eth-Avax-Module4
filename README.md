@@ -1,56 +1,85 @@
 # Eth-Avax-Module4
-Degen Gaming ERC20 Token on Avalanche Network
 Overview
-Welcome to the Degen Gaming ERC20 token project on the Avalanche network! This smart contract allows for the creation, transfer, redemption, and burning of Degen Gaming tokens. Players can earn these tokens as rewards for their participation in games and other activities within the Degen Gaming platform.
+The DengenToken smart contract is an implementation of an ERC-20 token with additional functionality for token redemption. The contract is built using Solidity and leverages the OpenZeppelin library for standard token operations and ownership management. The token is named "Degen" and has the symbol "DGN".
 
+Features
+Minting: The owner can mint new tokens to a specified address.
+Burning: Users can burn their tokens to reduce the total supply.
+Redeeming: Users can redeem tokens for items, which burns a specified number of tokens from their balance.
+Tracking Redeemed Items: The contract maintains a record of redeemed items for each user.
+Balance Check: Users can check their token balance.
+Token Transfer: Tokens can be transferred between addresses with support for allowance.
 Contract Details
-Contract Address: [Insert Contract Address Here]
-Network: Avalanche
-Functionality
-Minting New Tokens
-Only the owner of the smart contract has the authority to mint new tokens. As the owner, you can create and distribute tokens to players as rewards for their contributions to Degen Gaming.
+Variables
+tokenCost: The cost of redeeming tokens, set to 1 by default.
+redeemedItems: A mapping to track redeemed items for each user.
+Events
+TokensRedeemed: Emitted when tokens are redeemed by a user.
+Functions
+Constructor
+constructor() ERC20("Degen", "DGN") Ownable(msg.sender)
 
-Transferring Tokens
-Players have the ability to transfer their Degen Gaming tokens to other participants within the platform. This functionality facilitates peer-to-peer token transactions and enables a seamless transfer of value between players.
+Initializes the token with the name "Degen" and symbol "DGN". Sets the contract deployer as the owner.
 
-Redeeming Tokens
-Players can redeem their Degen Gaming tokens for various in-game items available in the Degen Gaming store. This feature incentivizes players to earn and accumulate tokens, as they can utilize them to access exclusive in-game content.
+Minting
+function mint(address to, uint256 amount) public onlyOwner
 
-Checking Token Balance
-At any time, players can easily check their Degen Gaming token balance. This transparency allows users to keep track of their token holdings and make informed decisions about their in-game activities.
+Mints new tokens to the specified address. Only the owner can call this function.
 
-Burning Tokens
-In the spirit of decentralization and user autonomy, anyone can burn their own Degen Gaming tokens that they no longer need or want. Burning tokens removes them from circulation and reduces the total supply of tokens, influencing the overall token economy.
+Burning
+function burn(uint256 amount) public
 
-Getting Started
-To interact with the Degen Gaming ERC20 token on the Avalanche network, you can utilize popular Ethereum wallets and tools that support the Avalanche network, such as Metamask with Avalanche Network configuration.
+Burns the specified amount of tokens from the caller's balance.
 
-Please note that while using this smart contract, you should be cautious about the transactions you execute, as all actions are irreversible on the blockchain.
+Redeeming
+function redeem(uint256 amount) public
 
-Example Transactions
-Below are some example transactions that showcase the functionality of the Degen Gaming ERC20 token:
+Redeems the specified amount of tokens. The cost is calculated as amount * tokenCost and the tokens are burned from the caller's balance. The redeemed items are recorded.
 
-Minting Tokens
-// Solidity function (onlyOwner modifier is assumed)
-function mintTokens(address player, uint256 amount) public onlyOwner {
-    // Mint 'amount' tokens and transfer them to 'player'
-    _mint(player, amount);
-}
-Transferring Tokens
-// Solidity function
-function transferTokens(address recipient, uint256 amount) public {
-    // Transfer 'amount' tokens from the sender's balance to the recipient's balance
-    _transfer(msg.sender, recipient, amount);
-}
-Redeeming Tokens
-// Solidity function
-function redeemTokens(uint256 amount) public {
-    // Implement redemption logic here
-    // For example, unlocking in-game items or features
-}
-Burning Tokens
-// Solidity function
-function burnTokens(uint256 amount) public {
-    // Burn 'amount' tokens from the sender's balance
-    _burn(msg.sender, amount);
-}
+Get Redeemed Items
+function getRedeemedItems(address account) public view returns (RedeemedItem[] memory)
+
+Returns the list of redeemed items for the specified account.
+
+Print Redeemed Tokens
+function printRedeemedTokens(address account) public view returns (string memory)
+
+Returns a string representation of the redeemed tokens for the specified account.
+
+Utility Functions
+function uintToString(uint256 v) internal pure returns (string memory)
+
+Converts a uint256 value to a string.
+
+Balance Check
+function checkBalance(address account) public view returns (uint256)
+
+Returns the token balance of the specified account.
+
+Token Transfer
+function transferTokens(address from, address to, uint256 amount) public
+
+Transfers tokens from one address to another. Supports transfers from an address by the owner of the tokens or via allowance.
+
+Usage
+Deployment: Deploy the contract to the Ethereum blockchain.
+Minting Tokens: The owner can mint tokens to any address using the mint function.
+Burning Tokens: Users can burn their tokens using the burn function.
+Redeeming Tokens: Users can redeem their tokens using the redeem function. The cost is calculated based on the tokenCost variable.
+Checking Balance: Users can check their token balance using the checkBalance function.
+Transferring Tokens: Tokens can be transferred between addresses using the transferTokens function.
+Prerequisites
+Solidity ^0.8.0
+OpenZeppelin Contracts
+Installation
+Install OpenZeppelin Contracts:
+
+npm install @openzeppelin/contracts
+Deploy the Contract: Use a tool like Truffle or Hardhat to deploy the contract to your desired network.
+
+License
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+Author
+
+Vageshwari Chaudhary
