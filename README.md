@@ -114,7 +114,6 @@ We need a solidity compatible virtual machine in order to run this program. Crea
         require(account != address(0), "Query for zero address");
         return balanceOf(account);
     }
-
     function transferTokens(address from, address to, uint256 amount) public {
         require(amount > 0, "Transfer amount must be greater than zero");
         require(from != address(0), "Cannot transfer from zero address");
@@ -127,8 +126,8 @@ We need a solidity compatible virtual machine in order to run this program. Crea
             _approve(from, _msgSender(), currentAllowance - amount);
             _transfer(from, to, amount);
         }
+      } 
     }
-}
 
 ## Usage
 
