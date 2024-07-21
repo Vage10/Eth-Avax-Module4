@@ -133,66 +133,80 @@ We need a solidity compatible virtual machine in order to run this program. Crea
 
 ### Minting Tokens
 Only the contract owner can mint new tokens. To mint tokens, call the mint function:
-
-`function mint(address to, uint256 amount) public onlyOwner`
-
+```
+function mint(address to, uint256 amount) public onlyOwner
+```
 Example:
+```
 truffle console
-```DengenToken.deployed().then(instance => instance.mint("0xYourAddress", 1000))```
+DengenToken.deployed().then(instance => instance.mint("0xYourAddress", 1000))
+```
 
 ### Burning Tokens
 Any token holder can burn their tokens by calling the burn function:
-
-```function burn(uint256 amount) public```
-
+```
+function burn(uint256 amount) public
+```
 Example:
+```
 truffle console
-```DengenToken.deployed().then(instance => instance.burn(500, {from: "0xYourAddress"}))```
+DengenToken.deployed().then(instance => instance.burn(500, {from: "0xYourAddress"}))
+```
 
 ### Redeeming Tokens
 Token holders can redeem their tokens by calling the redeem function:
-
-```function redeem(uint256 amount) public```
+```
+function redeem(uint256 amount) public
+```
 Example:
-
+```
 truffle console
-```DengenToken.deployed().then(instance => instance.redeem(10, {from: "0xYourAddress"}))```
+DengenToken.deployed().then(instance => instance.redeem(10, {from: "0xYourAddress"}))
+```
 
 ### Checking Balance
 To check the balance of any address, call the checkBalance function:
-
-```function checkBalance(address account) public view returns (uint256)```
+```
+function checkBalance(address account) public view returns (uint256)
+```
 Example:
-
+```
 truffle console
-```DengenToken.deployed().then(instance => instance.checkBalance("0xYourAddress"))```
+DengenToken.deployed().then(instance => instance.checkBalance("0xYourAddress"))
+```
 
 ### Transferring Tokens
 Tokens can be transferred between addresses by calling the transferTokens function:
-
-```function transferTokens(address from, address to, uint256 amount) public```
+```
+function transferTokens(address from, address to, uint256 amount) public
+```
 Example:
-
+```
 truffle console
-```DengenToken.deployed().then(instance => instance.transferTokens("0xFromAddress", "0xToAddress", 100))```
+DengenToken.deployed().then(instance => instance.transferTokens("0xFromAddress", "0xToAddress", 100))
+```
 
 ### Retrieving Redeemed Items
 To retrieve the redeemed items for any address, call the getRedeemedItems function:
-
-```function getRedeemedItems(address account) public view returns (RedeemedItem[] memory)```
+```
+function getRedeemedItems(address account) public view returns (RedeemedItem[] memory)
+```
 Example:
-
+```
 truffle console
-```DengenToken.deployed().then(instance => instance.getRedeemedItems("0xYourAddress"))```
+DengenToken.deployed().then(instance => instance.getRedeemedItems("0xYourAddress"))
+```
 
 ### Printing Redeemed Tokens
 To print the details of redeemed tokens for any address, call the printRedeemedTokens function:
-
-```function printRedeemedTokens(address account) public view returns (string memory)```
+```
+function printRedeemedTokens(address account) public view returns (string memory)
+```
 Example:
-
+```
 truffle console
-```DengenToken.deployed().then(instance => instance.printRedeemedTokens("0xYourAddress"))```
+DengenToken.deployed().then(instance => instance.printRedeemedTokens("0xYourAddress"))
+```
 
 ## Author
 Vageshwari Chaudhary
