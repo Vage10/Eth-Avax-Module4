@@ -135,7 +135,7 @@ We need a solidity compatible virtual machine in order to run this program. Crea
 ### Minting Tokens
 Only the contract owner can mint new tokens. To mint tokens, call the mint function:
 
-```function mint(address to, uint256 amount) public onlyOwner```
+`function mint(address to, uint256 amount) public onlyOwner`
 
 Example:
 truffle console
